@@ -39,7 +39,20 @@ public class TargetSum {
 
 	public static void main(String[] args) {
 		int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-		int[] x = twoSum(nums, 10);
+		int[] x = twoSum_algo(nums, 10);
 		System.out.println(Arrays.toString(x));
+	}
+
+	private static int[] twoSum_algo(int[] numbers, int target) {
+		HashMap<Integer, Integer> hash = new HashMap<Integer, Integer>();
+		for (int i = 0; i < numbers.length; i++) {
+			Integer diff = (Integer) (target - numbers[i]);
+			if (hash.containsKey(diff)) {
+				int toReturn[] = {numbers[hash.get(diff)], numbers[i] };
+				return toReturn;
+			}
+			hash.put(numbers[i], i);
+		}
+		return null;
 	}
 }
